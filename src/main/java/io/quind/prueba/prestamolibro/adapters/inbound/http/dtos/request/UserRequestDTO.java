@@ -7,8 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class UserRequest {
-    private Long id;
+public class UserRequestDTO {
     private Long identificationNumber;
     private String name;
     private String lastName;
