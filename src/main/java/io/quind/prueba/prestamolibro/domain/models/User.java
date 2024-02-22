@@ -2,13 +2,13 @@ package io.quind.prueba.prestamolibro.domain.models;
 
 public class User {
     private Long id;
-    private Long identificationNumber;
+    private String identificationNumber;
     private String name;
     private String lastName;
     private String mail;
     private String birthday;
 
-    public User(Long id, Long identificationNumber, String name, String lastName, String mail, String birthday) {
+    public User(Long id, String identificationNumber, String name, String lastName, String mail, String birthday) {
         this.id = id;
         this.identificationNumber = identificationNumber;
         this.name = name;
@@ -21,7 +21,7 @@ public class User {
         return id;
     }
 
-    public Long getIdentificationNumber() {
+    public String getIdentificationNumber() {
         return identificationNumber;
     }
 
