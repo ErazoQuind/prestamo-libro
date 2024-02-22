@@ -1,9 +1,12 @@
 package io.quind.prueba.prestamolibro.adapters.inbound.http.controllers;
 
 import io.quind.prueba.prestamolibro.adapters.inbound.http.dtos.request.UserRequestDTO;
-import io.quind.prueba.prestamolibro.adapters.inbound.http.dtos.response.UserResponseDTO;
 import io.quind.prueba.prestamolibro.adapters.inbound.http.handlers.IUserHandler;
 import io.quind.prueba.prestamolibro.configuration.Constants;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,7 +24,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
     private final IUserHandler userHandler;
-
+    @Operation(summary = "Add a new user",
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "user created",
+                            content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Map"))),
+                    @ApiResponse(responseCode = "422", description = "customer already exists",
+                            content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Error")))
+            })
     @PostMapping
     public ResponseEntity<Map<String,String>> createCustomer(@Valid @RequestBody UserRequestDTO userRequestDTO){
         userHandler.createUser(userRequestDTO);

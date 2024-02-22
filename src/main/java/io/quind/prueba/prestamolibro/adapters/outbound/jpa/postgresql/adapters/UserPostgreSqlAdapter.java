@@ -16,13 +16,8 @@ public class UserPostgreSqlAdapter implements IUserPersistencePort {
     private final IUserEntityMapper userEntityMapper;
 
     @Override
-    public void createUser(User user) {
-
-    }
-
-    @Override
-    public void updateUser(User user) {
-
+    public void saveUser(User user) {
+      userRepository.save(userEntityMapper.toEntity(user));
     }
 
     @Override

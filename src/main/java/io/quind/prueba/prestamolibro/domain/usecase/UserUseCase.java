@@ -15,12 +15,14 @@ public class UserUseCase implements IUserServicePort {
 
     @Override
     public void createUser(User user) {
-
+        //todo: validar usuario no existe
+        userPersistencePort.saveUser(user);
     }
 
     @Override
     public void updateUser(User user) {
-
+        //todo: validar usuario existe
+        userPersistencePort.saveUser(user);
     }
 
     @Override
